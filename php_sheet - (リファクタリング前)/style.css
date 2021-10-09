@@ -1,0 +1,654 @@
+html{
+    font-size: 62.5%;
+    color:#2B2421;
+    background: #f2f7f5;
+
+}
+
+a{
+    vertical-align: middle;
+}
+
+
+/* ヘッダー */
+#header{
+    background:#A5A5A5;;
+    height: 80px;
+}
+.header-inner{
+    align-items: center;
+    height: 100%;
+    display: flex;
+    width: 900px;
+    margin:0 auto;
+    justify-content: space-between;
+}
+/* #header a img{
+    padding-left:230px;
+} */
+
+.header-nav{
+    display: flex;
+    justify-content: center;
+}
+.site-title a{
+    display: block;
+}
+
+.header-nav li{
+    width:120px;
+    height: 30px;
+    font-size:2.0rem;
+}
+
+.header-nav li a{
+    display: block;
+    height: 100%;
+    text-align: center;
+}
+
+
+/* mainのサブヘッダー */
+.main-header{
+    height: 60px;
+    position:relative;
+}
+.main-header .main-title{
+    position:absolute;
+    width:380px;
+    height: 40px;
+    background: #ffa8ba;
+    font-size:2.0rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    line-height:40px;
+    border: 1px solid #00332c;
+}
+
+
+/* main */
+#main{
+    margin-bottom:30px;
+}
+.main-wrap{
+    width:900px;
+    margin:0 auto;    
+}
+
+/* mainの冒頭説明 */
+.main-wrap .page-info-wrap{
+    width:100%;
+}
+
+.page-info{
+    padding-top:20px;
+    padding-bottom: 20px;
+    max-height: 80px;
+    font-size:1.8rem;
+    text-align: center;
+}
+
+/* 1カラムの時のmainの外枠　*/
+.col1-wrap{
+    width:100%;
+    border: 2.5px solid #00473e;
+    border-radius: 20px;
+}
+
+/* 2カラムの時のmainの外枠 */
+.col2-wrap{
+    display: flex;
+    width:900px;
+    justify-content: space-between;
+    margin-top:30px;
+    align-items: flex-start;
+}
+
+/* 2カラムの時のmainの主要コンテンツ */
+.col2-section-wrap{
+    width:700px;
+    padding-left:10px;
+    padding-top:10px;
+}
+
+/* 2カラムの時のサイドバーの外枠とコンテンツ */
+.col2-sidebar-wrap{
+    width:185px;
+    /* height: 300px; */
+    background-color: #ffa8ba;;
+}
+
+/* habitの表示 */
+
+.section-title{
+    font-weight: bold;
+    font-size: 2.0rem;
+    padding-bottom:20px;
+}
+
+
+.col2-habit-post{
+    width:680px;
+    border: 2.5px solid #00473e;
+    font-size:1.8rem;
+    padding-bottom:20px;
+    margin-bottom:30px;
+}
+.col2-habit-post-height{
+    height: auto;
+}
+.habit-row-item{
+    display: flex;
+    height: 70px;
+    justify-content: space-around;
+    padding-top:5px;
+    align-items: center;
+}
+.habit-row1-item{
+    height: 80px;
+}
+.habit-row2-item{
+    height: 160px;
+}
+
+.habit-item-content{
+    width:500px;
+    display: inline-block;
+    max-height: 40px;
+    overflow: hidden;
+}
+.item-row1{
+    height: 60px;
+    overflow: hidden;
+}
+
+.item-row2{
+    height: 120px;
+}
+
+.habit-item-title{
+    width:100px;
+    padding-top: 5px;
+}
+
+.habit-user_pic{
+    border-radius:50%;
+    width:63px;
+    height: 63px;
+}
+.habit-item-name{
+    line-height: 60px;
+    width:260px;
+}
+.habit-button-group{
+    display: flex;
+    padding-top:15px;
+}
+.habit-button-group a{
+    height: 40px;
+    width:140px;
+    font-size:1.6rem;
+    margin:0 auto;
+    border:1.5px solid black;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+    background: #faae2b;
+}
+
+.habit-card{
+    display: block;
+    margin-top:20px;
+}
+
+/* テキスト入力エリア */
+.text-field-wrap{
+}
+
+
+.text-field-upper{
+    padding-top: 40px;
+}
+
+.text-field-tag{
+    font-size:1.6rem;
+    height: 30px;
+    padding-left:30px;
+    display: inline-block;
+    line-height: 30px;
+    width:70px;
+}
+.text-field-label{
+    font-size:1.8rem;
+    height: 30px;
+    padding-left:20px;
+    padding-right: 30px;
+    display: inline-block;
+    line-height: 30px;
+    width:230px;
+}
+.text-field-wrap input[type="text"],.text-field-wrap input[type="password"]{
+    display: inline-block;
+    width:500px;
+    height: 30px;
+    border:1px solid black;
+    font-size:1.8rem;
+    transform: translateY(-3px);
+    padding-left:3px;
+    background: floralwhite;
+}
+
+.text-field-footer{
+    margin-top:20px;
+    padding-bottom:20px;
+}
+.text-field-info{
+    font-size:1.6rem;
+    height:50px;
+    padding-left: 305px;
+}
+.text-field-msg{
+    font-size:1.6rem;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 20px;
+    color: #fa5246;
+}
+
+.button-field-wrap{
+    height: 120px;
+    position: relative;
+    padding-top: 20px;
+    padding-right: 20px;
+    font-size: 1.6rem;
+}
+
+.main-button{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    height: 50px;
+    width:200px;
+    font-size:1.8rem;
+    margin:0 auto;
+    border:2px solid #00332c;
+    text-align: center;
+    background: #faae2b;
+    border-radius: 5px;
+}
+
+
+/* サイドバー */
+.mypage-sidebar{
+    width: 100%;
+    border: 1px solid black;
+    font-size: 1.8rem;
+    padding-top:10px;
+    padding-left:10px;
+    padding-bottom:30px;
+}
+.mypage-sidebar-item{
+    margin-top:20px;
+    display: inline-block;
+    
+}
+.mypage-sidebar-item a{
+    display: block;
+    padding:5px;
+}
+
+
+
+
+/* 習慣登録フォーム */
+.habit-input-form{
+    width:700px;
+    height: 1000px;
+    background-color: brown;
+}
+
+.open-button-wrap{
+    margin-top:10px;
+}
+.open-button-wrap input[type="checkbox"]{
+    height: 20px;
+    width:20px;
+    margin-left:15px;
+}
+.open-button-wrap span{
+    margin-left:10px;
+}
+
+.open-button-wrap{
+    display: block;
+}
+
+/* 習慣の記録フォーム */
+
+.archive-form form{
+    padding-top:10px;
+    padding-left:20px;
+}
+
+.archive-form{
+    width: 100%;
+    border: 1px solid black;
+    font-size: 1.8rem;
+    margin-bottom:30px;
+    padding-bottom:20px;
+}
+
+.archive-date{
+    display: inline-block;
+}
+.archive-item-tag{
+    display: inline-block;
+}
+
+.archive-complete-form input[type="radio"]{
+    width: 40px;
+    height: 20px;
+    vertical-align: -10%;
+}
+.archive-complete-form .material-icons{
+    vertical-align: -15%;
+}
+.archive-complete-form{
+    display: inline-block;
+}
+
+.archive-comment-title{
+    display: block;
+    margin-top:30px;
+}
+.archive-form textarea{
+    border:1px solid gray;
+    width:500px;
+    margin-top:20px;
+    height: 120px;
+}
+.archive-form input[type="submit"]{
+    width:120px;
+    height: 40px;
+    border: 1px solid blue;
+    text-align: center;
+    margin-left:30px;
+    margin-top: 95px;
+
+}
+.co2-habit-post-no-form{
+    height: auto;
+}
+
+/* 検索サイドバー */
+.search-bar{
+    font-size: 1.8rem;
+    padding-top:20px;
+    padding-left:8px;
+}
+
+.search-bar-item-wrap{
+    padding-bottom:20px;
+}
+
+.search-bar-item-wrap select{
+    display: block;
+    margin-top:20px;
+    appearance: button;
+    border: 1px solid gray;
+    width: 170px;
+}
+
+.search-bar-item-wrap option{
+    padding: 1px 3px;
+}
+.search-bar-item-wrap input[type="submit"]{
+    border: 1px solid black;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+/* 検索結果の見出し */
+.result-show{
+    display: flex;
+    justify-content: space-between;
+    font-size:1.8rem;
+}
+
+/* パスワードを忘れた方のボタン */
+.sub-button-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:10px;
+}
+
+.sub-button-wrap input[type="checkbox"]{
+    height: 20px;
+    width: 20px;    
+    margin-left: 30px;
+
+}
+
+.sub-button-wrap span{
+    font-size: 1.6rem;
+    vertical-align: bottom;
+    margin-left: 10px;
+}
+
+.pass-reminder-wrap{
+    float:right;
+}
+.pass-reminder-wrap a{
+    color:red;
+}
+
+/* 操作完了後のメッセージスライド */
+.js-msg-slide{
+    background: salmon;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    height: 60px;
+    line-height: 60px;
+    opacity: 0.7;
+    font-weight: bold;
+    display: none;
+}
+
+
+/* 習慣作成のフォーム */
+.habit-item-form{
+    border:1px solid #00332c;
+    background:whitesmoke;
+    width: 500px;
+    padding:5px;
+}
+
+.habit-field-footer{
+    height: 30px;
+}
+.habit-form-button{
+    height: 50px;
+    width: 200px;
+    font-size: 1.8rem;
+    margin: 0 auto;
+    text-align: center;
+    border: 1.5px solid #00332c;
+    border-radius: 5px;
+    background: #faae2b;
+}
+.prof-text-field-label{
+    display: inline-block;
+    width:80px;
+}
+
+.text-field-wrap input[type="number"]{
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    border: 1px solid black;
+    font-size: 1.8rem;
+    transform: translateY(-3px);
+}
+
+
+/* プロフィール編集の画像フォーム */
+.area-drop{
+    display: inline-block;
+    width: 320px;
+    height: 260px;
+    background: whitesmoke;
+    line-height: 260px;
+    text-align: center;
+    margin-left: 60px;
+    position: relative;
+}
+.input-file{
+    position: absolute;
+    width: 320px;
+    height: 260px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.pic-field-wrap{
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.pic-field-wrap img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+.prof-pic-field-label{
+    display: inline-block;
+}
+
+/* ページングバー */
+
+.paging-bar-section{
+    font-size: 2.0rem;
+    text-align: center;
+    padding-bottom:30px;
+}
+.paging-bar-wrap{
+    display: inline-block;
+}
+.paging-bar{
+    display: flex;
+
+}
+.paging-bar-item{
+    width:30px;
+    border:1px solid gray;
+    margin-left:20px;
+    line-height: 30px;
+}
+.paging-bar-item a{
+    display: block;
+    width:30px;
+    height: 26px;
+    text-align: center;
+}
+.paging-bar-item:first-child{
+    margin-left:0;
+}
+/* 習慣記録カレンダー */
+.record-table{
+    width: 400px;
+    height: 300px;
+}
+td{
+    text-align: center;
+    width: 60px;
+    height: 50px;
+    vertical-align: top;
+}
+
+.record-calender-title{
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+.record-calender{
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+}
+.record-calender th{
+    text-align: center;
+    vertical-align: middle;
+    width: 60px;
+    height: 30px;
+}
+.record-calender td{
+    text-align: center;
+    width: 60px;
+    height: 50px;
+    vertical-align: top;
+}
+.record-calender tr{
+    border-bottom:1px solid goldenrod;
+}
+.input-record{
+    border: 1px solid black;
+    border-radius: 6px;
+    padding-left: 20px;
+}
+
+
+.archive-form p{
+    height: 20px;
+}
+.complete-form-err{
+    display: inline-block;
+}
+
+.habit-category-select-wrap{
+    width: 500px;
+}
+.habit-category-select{
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    background:whitesmoke;
+    width:200px;
+}
+
+.common-err-info p{
+    height: 20px;
+    padding-left:20px;
+    color:#fa5246;
+}
+
+
+
+/* footer */
+.footer{
+    height: 20px;
+    background: gray;
+    text-align: center;
+    line-height: 20px;
+    color:whitesmoke;
+}
+
+.err{
+    background: #ffa8ba;
+}
+
+input[type="number"]{
+    background: floralwhite;
+}

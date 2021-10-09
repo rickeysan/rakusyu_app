@@ -1,0 +1,24 @@
+
+/* ライブプレビューのための練習用のCSS */
+.area-drop{
+    width:200px;
+    height: 140px;
+    background:whitesmoke;
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.input-file{
+    height: 370px;
+    position: absolute;
+    opacity: 0;
+    top:0;
+    left:0;
+}
+.prev-img{
+    width:100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
