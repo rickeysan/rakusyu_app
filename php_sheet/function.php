@@ -140,7 +140,7 @@ function validEmailDup($email){
     }
 }
 
-
+// sample
 
 // DB接続準備
 function dbConnect(){
