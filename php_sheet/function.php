@@ -140,11 +140,12 @@ function validEmailDup($email){
     }
 }
 
-// sample
+
+
 
 // DB接続準備
 function dbConnect(){
-    $dsn = 'mysql:dbname=rakusyu;host=localhost;charset=utf8';
+    $dsn = 'mysql:dbname=rakusyu;host=localhost:8888;charset=utf8';
     $user = 'root';
     $password = 'root';
     $options = array(
