@@ -714,3 +714,34 @@ input[type="number"]{
     display: flex;
     justify-content: space-around;
 }
+
+.main-img-slider{
+    width:720px;
+    height: 400px;
+    margin:30px auto 30px;
+    background:#faae2b;
+    overflow: hidden;
+    position: relative;
+}
+.main-wrap-slider-wrap{
+    overflow: hidden;
+    position: relative;
+}
+.main-img-slider img{
+    width:100%;
+    height: 100%;
+}
+.img-slider-item{
+    float:left;
+    width:720px;
+    height: 400px;
+}
+.img-slider-arrow-wrap{
+    position:absolute;
+    top:50%;
+    
+}
+
+.main-wrap i{
+    font-size: 32px;
+}
