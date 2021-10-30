@@ -2,8 +2,7 @@
 <footer id="footer">All Rights Reserved.</footer>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 $(function(){
     console.log('こんにちは');
@@ -68,26 +67,65 @@ $(function(){
     });
 
     // 特定の日付にデータがあるか判定
-    var $input_date = $('.input-record');
-    console.log($input_date);
-    $input_date.on('change',function(){
-        console.log('チェンジされました');
-        var $date = this.value;
-        console.log($date);
+    // var $input_date = $('.input-record');
+    // console.log($input_date);
+    // $input_date.on('change',function(){
+    //     console.log('チェンジされました');
+    //     var $date = this.value;
+    //     console.log($date);
+
+    //     $.ajax({
+    //         type:"POST",
+    //         url:"ajaxDate.php",
+    //         data:{date : $date}
+    //     }).done(function(){
+    //         console.log('Ajax Success');
+    //     }).fail(function(){
+    //         console.log('Ajax Error');
+    //     });
+    // });
+
+    // 特定の日付にデータがあるか判定
+    // 1. inputの値が変化したか判定
+    // 2. inputの値（日付）を取得
+    // 3. ajaxDate.phpに送信
+    // 4. dataから、true or falseを取得
+    // 5. 適当なクラスをつける、外す、メッセージを表示する、非表示にする
+    var $record_date = $('.js-input-record-date');
+    console.log($record_date);
+    $record_date.on('change',function(){
+        console.log('日付が変わりました');
+        $that = $(this);
 
         $.ajax({
-            type:"POST",
-            url:"ajaxDate.php",
-            data:{date : $date}
-        }).done(function(){
-            console.log('Ajax Success');
-        }).fail(function(){
-            console.log('Ajax Error');
-        });
+            type:'post',
+            url:'ajaxDate.php',
+            dataType:'json',
+            data:{
+                date:$that.val(),
+            }
+        }).then(function(data){
+            
+            console.log(data);
+
+            if(data.dateFlg){
+                $that.addClass('input-record-is-error');
+                $that.removeClass('input-record-is-success');
+                $('.record-date-msg').html('その日付はすでに記録済みです');
+                $('.js-archive-button').prop('disabled',true);
+            }else{
+                $that.addClass('input-record-is-success');
+                $that.removeClass('input-record-is-error');
+                $('.record-date-msg').html('');
+                $('.js-archive-button').prop('disabled',false);
+            }
+
+
+        })
     });
 
     
-})
+});
 
     </script>
 

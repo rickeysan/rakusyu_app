@@ -161,70 +161,11 @@ if($user_habit_flg && !empty($_POST)){
 // 3.HTML上に表示する
 
 
-debug('テスト-------------------------');
-$ym = date('Y-m');
-$timestamp = strtotime($ym,'-01');
-$today = date('Y-m-d');
+$weeks = makeCalender($userHabitLog);
 
-$html_title = date('Y年n月', $timestamp);
 
-// 当該付きの日数を取得
-$day_count = date('t',$timestamp);
-// 1日が何曜日か
-$youbi = date('w',$timestamp);
-// カレンダー作成の準備
-$weeks = [];
-$week = '';
 
-// 第1週目：空のセルを追加
-$week .= str_repeat('<td></td>',$youbi);
-debug('カレンダーを生成します');
 
-for($day = 1; $day <=$day_count;$day++,$youbi++){
-    $calender_flg = false;
-    if(1<= $day && $day <= 9){
-        $compare_date = date('Y-m-0').$day;
-    }else{
-        $compare_date = date('Y-m-').$day;
-    }
-    // 進歩状況のデータがあるか判定
-    foreach($userHabitLog as $key=>$val){
-        if($val['date'] == $compare_date){
-            $calender_achievement = $val['achievement'];
-            $calender_flg = true;
-        }
-    }
-
-    if($calender_flg){
-        $week .='<td>'.$day;
-        if($calender_achievement == 0){
-            $week .= '<span class="material-icons">radio_button_unchecked</span>';
-        }elseif($calender_achievement == 1){
-            $week .= '<span class="material-icons">change_history</span>';
-        }else{
-            $week .= '<span class="material-icons">close</span>';
-        }
-        $week .= '</td>';
-
-    }else{
-        // debug($day.'日の更新');
-        $week .='<td>'.$day.'</td>';
-        $calender_flg = false;
-    }
-
-    // 週終わり、または、月終わりの場合
-    if($youbi % 7 ==6 || $day == $day_count){
-        if($day == $day_count){
-            // 月の最終日の場合、空セルを追加
-            // 月の最終日が火曜日2,9,16,23,30の場合、水・木・金・土分の4つの空セルを追加
-            $week .=str_repeat('<td></td>',(6-$youbi%7));
-        }else{
-        }
-        $weeks[] = '<tr>'.$week.'</tr>';
-        $week = '';
-    }
-    
-}
 ?>
 
 <?php
@@ -262,8 +203,8 @@ require('head.php');
                             <?php if(!empty($err_msg['common'])) echo $err_msg['common'];?></p>
                             <div>
                                 <span class="archive-date">必須：日付</span><label for="">
-                                    <input name="record_date" class="input-record" type="date">
-                                    <p class="complete-form-err"><?php if(!empty($err_msg['record_date'])) echo $err_msg['record_date'];?></p>
+                                    <input name="record_date" class="input-record js-input-record-date" type="date">
+                                    <p class="record-date-msg"><?php if(!empty($err_msg['record_date'])) echo $err_msg['record_date'];?></p>
                                 </label>
                             </div>
                             <div class="archive-item-wrap">
@@ -289,7 +230,7 @@ require('head.php');
                             </div>
                                 <span class="archive-comment-title">任意：コメント</span>
                                 <textarea name="record_comment" id="" cols="30" rows="10"><?php if(!empty($_POST['record_comment'])) echo sanitize($_POST['record_comment']);?></textarea>
-                                <input type="submit" value="記録する" class="archive-button" <?php if($record_today) echo 'disabled';?>>
+                                <input type="submit" value="記録する" class="archive-button js-archive-button" <?php if($record_today) echo 'disabled';?>>
                         </form>
 
                     </div>
@@ -326,7 +267,7 @@ require('head.php');
                         
                         <div class="col2-habit-post col2-habit-post-border">
                         <h2 class="record-calender-title">
-                            <?php echo date('n');?>月の進捗状況
+                            <?php echo date('Y年n月');?>の進捗状況
                         </h2>
 
                         <table class="record-calender table-bordered">
@@ -350,7 +291,10 @@ require('head.php');
                             </tbody>
 
                         </table>
-
+                            <div class="calender-change-area">
+                                <button class="calender-prev">&lt;前の月</button>
+                                <button class="calender-next">次の月&gt;</button>
+                            </div>
                         </div>
 
                         <div class="section-title">コメント一覧</div>

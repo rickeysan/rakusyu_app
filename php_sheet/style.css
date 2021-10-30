@@ -691,3 +691,26 @@ input[type="number"]{
     margin-top: 80px;
     text-align: center;
 }
+
+
+.input-record-is-error{
+    background: seashell;
+}
+
+.input-record-is-success{
+    background: lightblue;
+}
+
+.record-date-msg{
+    color:#fa5246;
+}
+
+.calender-change-area{
+    margin-top:20px;
+    width:50%;
+    margin-bottom:10px;
+    margin-right:auto;
+    margin-left:auto;
+    display: flex;
+    justify-content: space-around;
+}

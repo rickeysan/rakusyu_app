@@ -2,65 +2,38 @@
 require('function.php');
 
 debug('「「「「「「「「「「「「「「「「「「「「「「「「');
-debug(' Ajax');
+debug(' Ajax-日付チェック-');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「');
 
 // Ajax処理
 
-if(!empty($_POST['date'])){
-    debug('post送信があります');
-    $date = $_POST['date'];
-    debug('$dateの値：'.$date);
-    try{
-        $dbh = dbConnect();
-        $sql = 'SELECT id FROM record WHERE habit_id=:h_id AND 
-        date=:h_date AND delete_flg=0';
-        $data = array(':h_id'=>$_SESSION['h_id'],':h_date'=>$date);
-        $stmt = queryPost($dbh,$sql,$data);
-        $result =$stmt->rowCount();
-        if(!empty($result)){
-            debug('その日付のデータはすでにあります');
-            $archieve_form_flg = true;
-        }else{
-            debug('その日付のデータはまだありません');
-            $archieve_form_flg = false;
-        }
+if(!empty($_POST)){
+    debug('$_POST送信の中身：'.print_r($_POST,true));
+    debug('$_SESSIONの中身：'.print_r($_SESSION,true));
 
-    } catch (Exception $e){
-        error_log('エラー発生：'.$e->getMessage());
+    $dbh = dbConnect();
+    $sql = 'SELECT id FROM record WHERE date =:date AND habit_id=:h_id';
+    $data = array(':date'=>$_POST['date'],':h_id'=>$_SESSION['h_id']);
+
+    $stmt = queryPost($dbh,$sql,$data);
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    debug('$resultの中身：'.print_r($result,true));
+
+    if(empty($result)){
+        debug('その日付のデータはまだ存在しません');
+        echo json_encode(array(
+            'dateFlg'=>false,
+        ));
+    }else{
+        debug('その日付のデータはすでに存在します');
+        echo json_encode(array(
+            'dateFlg'=>true,
+        ));
     }
 
+    exit();
+
+
 }
-
-?>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    $(function(){
-        var $archive_info = $('.archive-form-info');
-        $archive_info.text('さようなら');
-
-
-        <?php
-        if($archieve_form_flg){
-            debug('日付データありefdsce');
-        ?>
-        // $archive_info.text('その日はすでに記録済です')
-        $archive_info.text('こんにちは');
-
-        <?php }else{
-            debug('日付データあり');
-        ?>
-        $archive_info.text('')
-
-        <?php } ?>
-
-    })
-
-
-    
-
-
-</script>
-

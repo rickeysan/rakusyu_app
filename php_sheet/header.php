@@ -3,7 +3,7 @@
         <div class="header-inner">
 
             <h1 class="site-title">
-                <a href="mypage.php">
+                <a href="toppage.php">
                     <img src="img/logo.png" alt="">
                 </a>
             </h1>

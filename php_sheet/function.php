@@ -145,7 +145,7 @@ function validEmailDup($email){
 
 // DB接続準備
 function dbConnect(){
-    $dsn = 'mysql:dbname=rakusyu;host=localhost:8888;charset=utf8';
+    $dsn = 'mysql:dbname=rakusyu;host=localhost;charset=utf8';
     $user = 'root';
     $password = 'root';
     $options = array(
@@ -463,6 +463,76 @@ function getErrMsg($key){
 }
 
 
+// カレンダー生成関数
+function makeCalender($userHabitLog){
+
+    $ym = date('Y-m');
+    $timestamp = strtotime($ym,'-01');
+    $today = date('Y-m-d');
+
+    $html_title = date('Y年n月', $timestamp);
+
+    // 当該付きの日数を取得
+    $day_count = date('t',$timestamp);
+    // 1日が何曜日か
+    $youbi = date('w',$timestamp);
+    // カレンダー作成の準備
+    $weeks = [];
+    $week = '';
+
+    // 第1週目：空のセルを追加
+    $week .= str_repeat('<td></td>',$youbi);
+
+
+    debug('カレンダーを生成します');
+
+    for($day = 1; $day <=$day_count;$day++,$youbi++){
+        $calender_flg = false;
+        if(1<= $day && $day <= 9){
+            $compare_date = date('Y-m-0').$day;
+        }else{
+            $compare_date = date('Y-m-').$day;
+        }
+        // 進歩状況のデータがあるか判定
+        foreach($userHabitLog as $key=>$val){
+            if($val['date'] == $compare_date){
+                $calender_achievement = $val['achievement'];
+                $calender_flg = true;
+            }
+        }
+    
+        if($calender_flg){
+            $week .='<td>'.$day;
+            if($calender_achievement == 0){
+                $week .= '<span class="material-icons">radio_button_unchecked</span>';
+            }elseif($calender_achievement == 1){
+                $week .= '<span class="material-icons">change_history</span>';
+            }else{
+                $week .= '<span class="material-icons">close</span>';
+            }
+            $week .= '</td>';
+    
+        }else{
+            // debug($day.'日の更新');
+            $week .='<td>'.$day.'</td>';
+            $calender_flg = false;
+        }
+    
+        // 週終わり、または、月終わりの場合
+        if($youbi % 7 ==6 || $day == $day_count){
+            if($day == $day_count){
+                // 月の最終日の場合、空セルを追加
+                // 月の最終日が火曜日2,9,16,23,30の場合、水・木・金・土分の4つの空セルを追加
+                $week .=str_repeat('<td></td>',(6-$youbi%7));
+            }else{
+            }
+            $weeks[] = '<tr>'.$week.'</tr>';
+            $week = '';
+        }
+        
+    }
+    return $weeks;
+}
 
 
 
