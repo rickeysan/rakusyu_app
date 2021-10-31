@@ -9,13 +9,16 @@ $(function(){
     // フッターを最下部に固定
     var $ftr = $('#footer');
     console.log(window);
+    console.log($ftr);
     console.log(window.innerHeight);
+    console.log($ftr.offset());
     console.log($ftr.offset().top);
+    console.log($ftr.innerHeight());
     console.log($ftr.outerHeight());
 
     if( window.innerHeight > $ftr.offset().top + $ftr.outerHeight() ){
         console.log('footer位置を調整します');
-      $ftr.attr({'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight()) +'px;' });
+        $ftr.attr({'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight()) +'px;' });
     }
 
 
@@ -66,24 +69,6 @@ $(function(){
 
     });
 
-    // 特定の日付にデータがあるか判定
-    // var $input_date = $('.input-record');
-    // console.log($input_date);
-    // $input_date.on('change',function(){
-    //     console.log('チェンジされました');
-    //     var $date = this.value;
-    //     console.log($date);
-
-    //     $.ajax({
-    //         type:"POST",
-    //         url:"ajaxDate.php",
-    //         data:{date : $date}
-    //     }).done(function(){
-    //         console.log('Ajax Success');
-    //     }).fail(function(){
-    //         console.log('Ajax Error');
-    //     });
-    // });
 
     // 特定の日付にデータがあるか判定
     // 1. inputの値が変化したか判定
@@ -124,7 +109,44 @@ $(function(){
         })
     });
 
-    
+var slider = (function(){
+    var $currentItemNum = 1;
+    var $slideContainer = $('.slider__container');
+    var slideItemNum = $('.slider__item').length;
+    var slideItemWidth = $('.slider__item').innerWidth();
+    var slideContainerWidth = slideItemWidth * slideItemNum;
+    var DURATION = 500;
+
+    return {
+        slidePrev: function(){
+            if($currentItemNum > 1){
+                $slideContainer.animate({left:'+='+slideItemWidth+'px'},DURATION);
+                $currentItemNum--;
+            }
+        },
+        slideNext: function(){
+            if($currentItemNum < slideItemNum){
+                $slideContainer.animate({left:'-='+slideItemWidth+'px'},DURATION);
+                $currentItemNum++;
+            }
+        },
+        init: function(){
+            $slideContainer.attr('style','width;'+slideContainerWidth+'px');
+            var that = this;
+            $('.js-slide-next').on('click',function(){
+                that.slideNext();
+                console.log($currentItemNum);
+            });
+            $('.js-slide-prev').on('click',function(){
+                that.slidePrev();
+                console.log($currentItemNum);
+
+            })
+        }
+    }
+})();
+slider.init();
+
 });
 
     </script>
